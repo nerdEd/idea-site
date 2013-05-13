@@ -1,0 +1,178 @@
+@import "global";
+@import "compass/reset";
+@import "compass/css3";
+
+body, html, input, textarea {
+  font-family: "freight-sans-pro",sans-serif;
+  color: $primary_color;
+}
+
+header {
+  padding: 40px 0;
+  overflow: hidden;
+}
+
+sup {
+  vertical-align: super;
+  font-size: 60%;
+}
+
+a {
+  color: $highlight_color;
+
+  &:hover {
+    color: $primary_color
+  }
+}
+
+em, i { font-style: italic; }
+strong, b { font-weight: bold; }
+
+p {
+  line-height: 140%;
+  margin-bottom: 20px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.list {
+  line-height: 140%;
+  margin-bottom: 20px;
+  margin-left: 30px;
+
+  li {
+    list-style: disc;
+    margin-bottom: 5px;
+
+    &:last-child { margin-bottom: 0 }
+  }
+}
+
+.container {
+  overflow: hidden;
+  width: 900px;
+  margin: 0 auto;
+
+  &.absolute {
+    position: relative;
+    top: 0;
+    left: 50%;
+    margin-left: -450px;
+  }
+}
+
+.noclearfix { overflow: initial; }
+.clear { clear: both; }
+
+.one {
+  float: left;
+  width: 292px;
+  margin-right: 48px;
+}
+
+.two {
+  float: left;
+  width: 560px;
+  margin-right: 48px;
+}
+
+.three {
+  float: left;
+  width: 900px;
+  margin-right: 0;
+}
+
+.half { width: 50%; margin-left: 0; margin-right: 0; @include box-sizing(border-box); }
+
+.push-one {
+  margin-left: 316px;
+}
+
+.push-down {
+  margin-top: 50px;
+}
+
+.last { margin-right: 0; }
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.messages {
+  position: absolute;
+  width: 400px;
+  left: 50%;
+  margin-left: -200px;
+  text-align: center;
+
+  .message {
+    @include box-shadow(lighten($primary_color, 0.8) 2px 2px 5px);
+    @include border-radius(4px);
+    background: $inverse_primary_color;
+    padding: 10px 15px;
+
+    &.alert {
+      color: $inverse_primary_color;
+      background: $error_color;
+    }
+  }
+}
+
+.round-left { @include border-radius(5px 0 0 5px); }
+.round-right { @include border-radius(0 5px 5px 0); }
+
+.primary-heading, .secondary-heading, .tertiary-heading {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.primary-heading {
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+.secondary-heading {
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+.tertiary-heading {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.callout {
+  font-size: 1.4em;
+  font-style: italic;
+  color: $highlight_color;
+  margin-bottom: 1.1em;
+}
+
+.secondary {
+  color: lighten($primary_color, 40%);
+  font-size: 0.9em;
+}
+
+.horizontal-rule-img {
+  text-align: center;
+  margin-bottom: 20px;
+
+  &.extra-spacing {
+    margin-top: 20px;
+  }
+
+  img {
+    height: 20px;
+  }
+}
+

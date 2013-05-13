@@ -1,0 +1,38 @@
+@import "global";
+@import "compass/css3";
+
+.search {
+  @include box-sizing(border-box);
+  margin-bottom: 30px;
+  width: 100%;
+
+  .query {
+    @include box-sizing(border-box);
+    border: $primary_color 2px solid;
+    font-size: 1.1em;
+    padding: 10px 13px;
+    width: 70%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .submit {
+    @include box-sizing(border-box);
+    @include appearance(none);
+    padding: 10px 13px;
+    width: 30%;
+    margin: 0;
+    border: $primary_color 2px solid;
+    background: $primary_color;
+    color: $inverse_primary_color;
+    font-size: 1.1em;
+    cursor: pointer;
+
+    &:hover {
+      background: $highlight_color;
+      border: $highlight_color 2px solid;
+    }
+  }
+}

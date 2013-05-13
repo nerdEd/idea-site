@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="one push-one">
+    <h2 class="secondary-heading push-down">Edit <%= resource_name.to_s.humanize %></h2>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <ul>
+        <li>
+          <label>Profile Picture</label>
+          <div class="avatar">
+            <%= gravatar_image_tag(current_user.email, class: 'gravatar', :gravatar => { :secure => true, :size => 47 }) %>
+            <%= link_to 'Change Your Profile Picture on Gravatar', 'http://en.gravatar.com/' %>
+            <br class="clear" />
+          </div>
+        </li>
+
+        <li>
+          <%= f.label :name %>
+          <%= f.text_field :name, :autofocus => true %>
+        </li>
+
+        <li>
+          <%= f.label :email %>
+          <%= f.email_field :email %>
+        </li>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <li>
+          <%= f.label :password %>
+          <i class='secondary'>Leave blank if you don't want to change it.</i><br /><br />
+          <%= f.password_field :password, :autocomplete => "off" %>
+        </li>
+
+        <li>
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %>
+        </li>
+
+        <li>
+          <%= f.label :current_password %>
+          <i class='secondary'>Enter current password to confirm your changes.</i><br /><br />
+          <%= f.password_field :current_password %>
+        </li>
+
+        <li><%= f.submit "Update", class: 'submit' %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>

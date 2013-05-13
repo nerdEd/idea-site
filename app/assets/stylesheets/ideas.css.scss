@@ -1,0 +1,174 @@
+@import "global";
+@import "compass/css3";
+
+.button {
+  display: block;
+  color: $inverse_primary_color;
+  background: $highlight_color;
+  padding: 15px 17px;
+  font-size: 1.1em;
+  text-decoration: none;
+  text-align: center;
+  @include border-radius(5px);
+
+  &:hover {
+    background: $primary_color;
+    color: $inverse_primary_color;
+  }
+
+  &.dark {
+    background: $primary_color;
+
+    &:hover {
+      background: $highlight_color;
+    }
+  }
+
+  &.alert {
+    background: $error_color;
+    &:hover { background: $primary_color; }
+  }
+
+  &.bold {
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.sidebar {
+  .button {
+    margin-bottom: 30px;
+  }
+}
+
+.idea {
+  @include box-sizing(border-box);
+  margin-bottom: 50px;
+  overflow: hidden;
+
+  .gravatar {
+    width: 20px; height: 20px;
+  }
+
+  .vote {
+    @include box-sizing(border-box);
+    width: 100px;
+
+    .vote-value {
+      text-align: center;
+      width: 100%;
+      font-size: 6.0em;
+      margin-bottom: 20px;
+    }
+
+    .vote-button {
+      @include box-sizing(border-box);
+      @include appearance(none);
+      width: 50px;
+      height: 30px;
+      padding: 8px 0;
+      border: none;
+      cursor: pointer;
+      background: $primary_color;
+      color: $inverse_primary_color;
+
+      &:hover { background: $highlight_color; }
+      &.up { float: left; }
+      &.down { float: right; }
+    }
+  }
+
+  .info {
+    @include box-sizing(border-box);
+    width: 436px;
+    padding-left: 30px;
+
+    .idea-description {
+      margin-bottom: 30px;
+    }
+
+    .details {
+      overflow: hidden;
+      border-top: 1px solid lighten($primary_color, 50%);
+      padding: 6px 5px;
+      font-size: 0.8em;
+      line-height: 20px;
+
+      div {
+        float: left;
+        margin-right: 10px;
+        color: lighten($primary_color, 50%);
+      }
+
+      .view a {
+        color: lighten($primary_color, 50%);
+
+        &:hover {
+          color: $primary_color;
+        }
+      }
+    }
+  }
+}
+
+.idea-single {
+  .secondary-heading { margin-bottom: 25px; }
+  .idea-info {
+    overflow: hidden;
+    line-height: 25px;
+    color: lighten($primary_color, 30%);
+
+    div { float: left; margin-right: 30px; }
+    .author img { width: 25px; height: 25px; }
+  }
+  .idea-comments {
+    textarea {
+      @include border-radius(5px);
+      height: 100px;
+      font-size: 0.9em;
+    }
+    .submit { @include border-radius(5px); }
+  }
+  .vote {
+    margin-bottom: 60px;
+
+    .vote-value {
+      font-weight: bold;
+      text-align: center;
+      font-size: 5.0em;
+    }
+    .vote-button {
+      @extend .button;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+    }
+  }
+}
+
+
+#comments {
+  .comment {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid lighten($primary_color, 70%);
+
+    &:last-child { border-bottom: none; }
+
+    ul { list-style: disc; margin-left: 30px; }
+    ul, h1, h2, h3, h4, h5, h6, p { margin-bottom: 15px; }
+    img { width: 100%; }
+  }
+  .comment-metadata {
+    overflow: hidden;
+    line-height: 15px;
+
+    div {
+      float: left;
+      margin-right: 15px;
+      color: lighten($primary_color, 30%);
+      font-size: 0.9em;
+    }
+
+    .comment-author img { width: 15px; height: 15px; }
+  }
+}

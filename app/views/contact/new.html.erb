@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="two">
+    <h2 class="secondary-heading">Contact</h2>
+
+    <%= form_for @contact do |f| %>
+      <% unless @contact.errors.empty? %>
+        <div id="error_explanation" class='errors'>
+          <ul>
+            <% @contact.errors.full_messages.each do |message| %>
+              <li class='error'><%= message %>.</li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <ul>
+        <li>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </li>
+        <li>
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+        </li>
+        <li>
+          <%= f.label :subject %>
+          <%= f.text_field :subject %>
+        </li>
+        <li>
+          <%= f.label :body %>
+          <%= f.text_area :body %>
+        </li>
+        <li>
+          <%= f.submit 'Send Message', class: 'submit' %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+  <div class="one last">
+    <h3 class="tertiary-heading">Got a Question?</h3>
+    <p>If you have a question about attending the event, sponsoring the event, or anything else related to Idea Site or getting around in Balitmore, let us know!</p>
+    <p>We're trying to change the way people get around. Get involved.</p>
+  </div>
+</div>

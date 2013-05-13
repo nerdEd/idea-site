@@ -1,0 +1,23 @@
+@import "global";
+
+.schedule {
+  overflow: hidden;
+  margin-bottom: 30px;
+
+  dt, dd {
+    font-size: 1.2em;
+    line-height: 1.5em;
+    color: lighten($primary_color, 10%);
+  }
+
+  dt {
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  dd {
+    display: block;
+    margin-left: 90px;
+  }
+}

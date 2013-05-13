@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="two">
+    <%= render partial: 'search' %>
+
+    <h2 class="secondary-heading">Ideas <%= if params[:query]; raw("matching &lsquo;#{params[:query]}&rsquo;"); end %></h2>
+    <ul>
+      <% @ideas.each do |idea| %>
+        <%= render partial: 'idea', locals: { idea: idea } %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="one last">
+    <%= render 'sidebar' %>
+  </div>
+</div>

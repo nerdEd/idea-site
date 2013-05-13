@@ -1,0 +1,32 @@
+@import "global";
+@import "compass/css3";
+
+nav {
+  overflow: hidden;
+  margin-left: -15px;
+
+  .nav-item {
+    @include border-radius(4px);
+    @include opacity(0.9);
+    float: left;
+    display: block;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin-right: 5px;
+    color: $primary_color;
+
+    &.active {
+      background: $primary_color;
+      color: $inverse_primary_color;
+    }
+
+    &:hover {
+      background: $highlight_color;
+      color: $inverse_primary_color;
+    }
+  }
+}
+
+#account-nav {
+  padding-top: 10px;
+}

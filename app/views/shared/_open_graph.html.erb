@@ -1,0 +1,3 @@
+<% options.each do |property, content| %>
+  <%= tag('meta', property: "og:#{property.to_s}", content: content) %>
+<% end %>

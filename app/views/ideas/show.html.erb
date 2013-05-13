@@ -1,0 +1,55 @@
+<% title @idea.title %>
+<% open_graph_tags :title => @idea.title %>
+
+<div class="container idea-single">
+  <div class="two">
+    <h2 class="secondary-heading"><%= @idea.title %></h2>
+    <div class="idea-info">
+      <div class="author"><%= gravatar_image_tag(@idea.user.email, class: 'gravatar', :gravatar => { :secure => true }) %></div>
+      <div class="published">Posted on <%= @idea.created_at.strftime('%B %d, %Y') %></div>
+      <div class="comments"><%= pluralize @idea.comments.count, 'Comment' %></div>
+      <%= edit_idea_link(@idea) %>
+    </div>
+    <p><%= raw(Kramdown::Document.new(@idea.description, input: 'markdown').to_html) %></p>
+  </div>
+  <div class="one last idea-comments">
+    <div class="vote">
+      <div class="left half">
+        <div class="vote-value"><%= @idea.plusminus %></div>
+      </div>
+      <div class="right half">
+        <%= button_to raw('&#9650;'), { :action => :vote, :id => @idea.id, :vote => :up }, :method => :post, :class => 'vote-button up' %>
+        <%= button_to raw('&#9660;'), { :action => :vote, :id => @idea.id, :vote => :down }, :method => :post, :class => 'vote-button down' %>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <h3 class="tertiary-heading">New Comment</h3>
+    <div id="comment-new">
+      <ul>
+        <%= form_for [@idea, @comment] do |f| %>
+          <div style="margin:0;padding:0;display:inline">
+            <%= f.hidden_field :commentable_type %>
+            <%= f.hidden_field :commentable_id %>
+          </div>
+          <li>
+            <%= f.text_area :comment %>
+            <p class="tooltip"><%= link_to 'Markdown', 'http://daringfireball.net/projects/markdown/syntax' %> enabled.</p>
+          </li>
+          <li><%= f.submit 'Post Comment', class: 'submit' %></li>
+        <% end %>
+      </ul>
+    </div>
+    <h3 class="tertiary-heading">Comments</h3>
+    <ul id="comments">
+      <% @idea.comments.reverse.select { |c| c.persisted? }.each do |comment| %>
+        <li class="comment">
+          <div class="comment-body"><%= raw(Kramdown::Document.new(comment.comment, input: 'markdown').to_html) %></div>
+          <div class="comment-metadata">
+            <div class="comment-author"><%= gravatar_image_tag(comment.user.email, class: 'gravatar', :gravatar => { :secure => true }) %></div>
+            <div class="comment-date">Posted on <%= comment.created_at.strftime('%B %d, %Y at %l:%M %p') %></div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
