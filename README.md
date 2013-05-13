@@ -17,6 +17,10 @@ A site for promoting an event and collecting ideas for that event.
 
 There are also some remnants of the site this came from laying around in `PagesController` and its views, as well as the assets folder. For now, this has been left around as a suggestion of structure, but you should feel free to delete these if you don't want them.
 
+## "Themeing"
+
+It's nothing fancy yet, but you can change some colors in `app/assets/stylesheets/globals.css.scss`.
+
 
 ## Tests
 
