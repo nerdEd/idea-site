@@ -24,3 +24,6 @@ group :assets do
   gem 'compass-rails'
 end
 
+group :development, :test do
+  gem 'pry-rails'
+end
