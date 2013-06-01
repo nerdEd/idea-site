@@ -1,0 +1,10 @@
+.container
+  .two
+    = render partial: 'search'
+    %h2.secondary-heading
+      Ideas #{if params[:query]; raw("matching &lsquo;#{params[:query]}&rsquo;"); end}
+    %ul
+      - @ideas.each do |idea|
+        = render partial: 'idea', locals: { idea: idea }
+  .one.last
+    = render 'sidebar'

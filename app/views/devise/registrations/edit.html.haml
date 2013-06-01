@@ -1,0 +1,38 @@
+.container
+  .one.push-one
+    %h2.secondary-heading.push-down
+      Edit #{resource_name.to_s.humanize}
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+      = devise_error_messages!
+      %ul
+        %li
+          %label Profile Picture
+          .avatar
+            = gravatar_image_tag(current_user.email, class: 'gravatar', :gravatar => { :secure => true, :size => 47 })
+            = link_to 'Change Your Profile Picture on Gravatar', 'http://en.gravatar.com/'
+            %br.clear/
+        %li
+          = f.label :name
+          = f.text_field :name, :autofocus => true
+        %li
+          = f.label :email
+          = f.email_field :email
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div
+            Currently waiting confirmation for: #{resource.unconfirmed_email}
+        %li
+          = f.label :password
+          %i.secondary Leave blank if you don't want to change it.
+          %br/
+          %br/
+          = f.password_field :password, :autocomplete => "off"
+        %li
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation
+        %li
+          = f.label :current_password
+          %i.secondary Enter current password to confirm your changes.
+          %br/
+          %br/
+          = f.password_field :current_password
+        %li= f.submit "Update", class: 'submit'

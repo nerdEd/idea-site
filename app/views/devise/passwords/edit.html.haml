@@ -1,0 +1,15 @@
+.container
+  .one.push-one
+    %h2.secondary-heading.push-down Change your password
+    = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+      = f.hidden_field :reset_password_token
+      = devise_error_messages!
+      %ul
+        %li
+          = f.label :password, "New password"
+          = f.password_field :password, :autofocus => true
+        %li
+          = f.label :password_confirmation, "Confirm new password"
+          = f.password_field :password_confirmation
+        %li= f.submit "Change my password", class: 'submit'
+    = render "devise/shared/links"

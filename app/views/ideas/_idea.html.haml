@@ -1,0 +1,14 @@
+%li.idea
+  .vote.left
+    .vote-value= idea.plusminus
+    = button_to raw('&#9650;'), { :action => :vote, :id => idea.id, :vote => :up }, :method => :post, :class => 'vote-button up'
+    = button_to raw('&#9660;'), { :action => :vote, :id => idea.id, :vote => :down }, :method => :post, :class => 'vote-button down'
+  .info.right
+    .idea-title.tertiary-heading= link_to idea.title, idea_path(idea)
+    .idea-description= truncate(idea.description, length: 150)
+    .details
+      .author= gravatar_image_tag(idea.user.email, class: 'gravatar', :gravatar => { :secure => true })
+      .published= idea.created_at.strftime('%B %d, %Y')
+      .comments
+        (#{pluralize idea.comments.count, 'Comment'})
+      .view= link_to 'View', idea_path(idea)

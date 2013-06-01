@@ -1,0 +1,52 @@
+#hero
+  = image_tag 'train-station-blur.jpg'
+  .container.absolute
+    %h1.heading Idea Site
+    %p.leader
+      Join us April 5
+      %sup th
+      to 7
+      %sup th
+      at Betamore to change
+      %br>/
+      transportation in Baltimore.
+    .subscription.container
+      .two
+        = link_to "Register for the Event!", 'http://betamore-reinventtransit-eorg.eventbrite.com/', :class => 'button bold'
+      .one.last
+        = link_to 'Submit an Idea', ideas_path, class: 'button dark'
+#learn-more.container.clearfix
+  .two
+    %h2.primary-heading About
+    %p.callout Reinvent Transit is a gathering/hackathon that will bring together technologists, makers, and creative problem solvers to better all forms of transportation in Baltimore.
+    = horizontal_image_rule
+    %p In partnership with the Baltimore City Department of Transportation and Betamore, we're hosting Reinvent Transit on Fri, Apr 5 - Sun, Apr 7 at Betamore in Federal Hill. Prior to the event, ideas are being gathered and refined on this website in hopes of sparking mutual interest.
+    %p While technology will be a likely tool used over the weekend, creative non-technical solutions are also of interest.
+    %p Over the weekend, roughly 80 software developers, designers, and citizens will be taking ideas that have been crowdsourced from the local community and building applications that help solve some transportation-related problems at Baltimore’s first Reinvent Transit event.
+    %p The weekend works like this: ideas will be presented on a Saturday morning to an audience of technologists. Teams will naturally be formed by people interested in solving the same problems.  They’ll work at Betamore over the next 24 hours and by Sunday evening, they’ll compete to win prizes by presenting a demo of what they’ve built to a panel of distinguished judges ranging from city transit officials to venture capitalists. Our prizes are meant to sustain the newly formed company. Rather than iPads and cash, we’ve put together an incredible package including new office space, pro-bono company formation assistance, free mentoring and more.
+  .one.last
+    %h3.secondary-heading Overview
+    %h4.tertiary-heading Friday
+    %p.secondary 10 speakers will be giving 5-10 minute lightning talks on their experiences as it relates to transit. Each speaker will be of a different profession: an MTA bus driver, bike messenger, cab driver, bike commuter, water taxi rider, etc.
+    %p.secondary During each talk, an audience of makers and technologists will be quietly but publicly brainstorming simple solutions to pain points that are identified.
+    %h4.tertiary-heading Saturday
+    %p.secondary Teams of makers, technologists, and the speakers will be formed by interest around the solutions proposed on Friday.
+    %h4.tertiary-heading Sunday
+    %p.secondary Teams will be finishing up their projects and creating a simple presentation/demo of what they’ve made. Categorical prizes will be awarded to teams that have created novel solutions, including grant opportunities to extend progress beyond the weekend.
+  #sponsors.three
+    %h3.secondary-heading Sponsors
+    %ul
+      = image_tag 'sponsors/trip.jpg', class: 'sponsor'
+      = image_tag 'sponsors/tigr.jpg', class: 'sponsor'
+      = image_tag 'sponsors/smart-logic.jpg', class: 'sponsor'
+      = link_to 'http://www.missionfocus.com' do
+        = image_tag 'sponsors/mission-focus.jpg', class: 'sponsor'
+      = image_tag 'sponsors/zipcar.jpg', class: 'sponsor'
+      = image_tag 'sponsors/cmta.jpg', class: 'sponsor'
+      = image_tag 'sponsors/live-baltimore.jpg', class: 'sponsor'
+      = image_tag 'sponsors/parking-panda.jpg', class: 'sponsor'
+      = image_tag 'sponsors/ride-scout.jpg', class: 'sponsor'
+      = image_tag 'sponsors/venable.jpg', class: 'sponsor'
+      = image_tag 'sponsors/donquisoft.jpg', class: 'sponsor'
+      = image_tag 'sponsors/car2go.jpg', class: 'sponsor'
+      = image_tag 'sponsors/bytelion.jpg', class: 'sponsor'

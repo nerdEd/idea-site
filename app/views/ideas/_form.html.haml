@@ -1,0 +1,23 @@
+= form_for idea do |f|
+  = f.hidden_field :user_id
+  - unless idea.errors.empty?
+    #error_explanation.errors
+      %ul
+        - idea.errors.full_messages.each do |message|
+          %li.error
+            = message
+            \.
+  %ul
+    %li
+      = f.label :title, 'Title'
+      = f.text_field :title, :id => 'idea-title'
+      %br/
+      #idea-similar
+    %li
+      = f.label :description, 'Description'
+      = f.text_area :description
+      %br/
+      %p.tooltip
+        = link_to 'Markdown', 'http://daringfireball.net/projects/markdown/syntax'
+        enabled.
+    %li= f.submit "#{ idea.persisted? ? "Edit Idea" : "Create Idea" }", class: 'submit'

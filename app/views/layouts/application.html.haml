@@ -1,0 +1,54 @@
+!!!
+%html
+  %head
+    %title= title
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = open_graph_tags
+    %script{:src => "//use.typekit.net/ccj0nnj.js", :type => "text/javascript"}
+    :javascript
+      try{Typekit.load();}catch(e){}
+  %body
+    %header
+      .container.noclearfix
+        %nav.left
+          = link_to 'Idea Site', root_path, :class => 'nav-item bold'
+          = link_to 'Schedule + Location', schedule_path, :class => 'nav-item'
+          = link_to 'Ideas', ideas_path, :class => 'nav-item'
+          = link_to 'APIs', apis_path, :class => 'nav-item'
+          = link_to 'Sponsor', sponsor_path, :class => 'nav-item'
+          = link_to 'Contact', contacts_path, :class => 'nav-item'
+        #account-nav.right
+          - if current_user
+            = link_to 'Your Account', edit_user_registration_path
+            \&mdash;
+            \#{link_to 'Sign Out', destroy_user_session_path, :method => :delete}
+          - else
+            = link_to 'Sign In', new_user_session_path
+            or #{link_to 'Sign Up', new_user_registration_path}
+        - if notice || alert
+          .messages
+            - if notice
+              %p.message.notice= notice
+            - if alert
+              %p.message.alert= alert
+        .clear
+    = yield
+    #footer
+      .container
+        %p
+          Made with
+          %a.ftw-logo{:href => "http://friendsoftheweb.com"}= image_tag 'ftw-logo.svg', title: 'Built by Friends of The Web'
+          in #{link_to 'Baltimore', 'http://madewithloveinbaltimore.org/'} &ndash; Hosted by #{link_to 'Betamore', 'http://betamore.com'} + Baltimore City
+    - if Rails.env.production?
+      :javascript
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-37877476-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();

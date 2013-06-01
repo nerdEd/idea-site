@@ -1,0 +1,42 @@
+- title @idea.title
+- open_graph_tags :title => @idea.title
+.container.idea-single
+  .two
+    %h2.secondary-heading= @idea.title
+    .idea-info
+      .author= gravatar_image_tag(@idea.user.email, class: 'gravatar', :gravatar => { :secure => true })
+      .published
+        Posted on #{@idea.created_at.strftime('%B %d, %Y')}
+      .comments= pluralize @idea.comments.count, 'Comment'
+      = edit_idea_link(@idea)
+    %p= raw(Kramdown::Document.new(@idea.description, input: 'markdown').to_html)
+  .one.last.idea-comments
+    .vote
+      .left.half
+        .vote-value= @idea.plusminus
+      .right.half
+        = button_to raw('&#9650;'), { :action => :vote, :id => @idea.id, :vote => :up }, :method => :post, :class => 'vote-button up'
+        = button_to raw('&#9660;'), { :action => :vote, :id => @idea.id, :vote => :down }, :method => :post, :class => 'vote-button down'
+      .clear
+    %h3.tertiary-heading New Comment
+    #comment-new
+      %ul
+        = form_for [@idea, @comment] do |f|
+          %div{:style => "margin:0;padding:0;display:inline"}
+            = f.hidden_field :commentable_type
+            = f.hidden_field :commentable_id
+          %li
+            = f.text_area :comment
+            %p.tooltip
+              = link_to 'Markdown', 'http://daringfireball.net/projects/markdown/syntax'
+              enabled.
+          %li= f.submit 'Post Comment', class: 'submit'
+    %h3.tertiary-heading Comments
+    %ul#comments
+      - @idea.comments.reverse.select { |c| c.persisted? }.each do |comment|
+        %li.comment
+          .comment-body= raw(Kramdown::Document.new(comment.comment, input: 'markdown').to_html)
+          .comment-metadata
+            .comment-author= gravatar_image_tag(comment.user.email, class: 'gravatar', :gravatar => { :secure => true })
+            .comment-date
+              Posted on #{comment.created_at.strftime('%B %d, %Y at %l:%M %p')}
