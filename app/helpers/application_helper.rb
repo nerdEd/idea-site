@@ -26,7 +26,7 @@ module ApplicationHelper
     if title.present?
       content_for :title, title
     else
-      content_for?(:title) ? content_for(:title) + ' | Idea Site' : 'Idea Site'
+      content_for?(:title) ? content_for(:title) + " | #{t(:site_name)}" : t(:site_name)
     end
   end
 
@@ -36,6 +36,6 @@ module ApplicationHelper
 
   private
   def default_open_graph_tags
-    { :'site_name' => 'Idea Site' }
+    { :'site_name' => t(:site_name) }
   end
 end
