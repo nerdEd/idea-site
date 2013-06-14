@@ -41,10 +41,10 @@
           Made with
           %a.ftw-logo{:href => "http://friendsoftheweb.com"}= image_tag 'ftw-logo.svg', title: 'Built by Friends of The Web'
           in #{link_to 'Baltimore', 'http://madewithloveinbaltimore.org/'} &ndash; Hosted by #{link_to 'Betamore', 'http://betamore.com'} + Baltimore City
-    - if Rails.env.production?
+    - if Rails.env.production? && ENV['GA_ACCOUNT']
       :javascript
         var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-37877476-1']);
+        _gaq.push(['_setAccount', #{ENV['GA_ACCOUNT']}]);
         _gaq.push(['_trackPageview']);
 
         (function() {
